@@ -9,9 +9,10 @@ export default function CardArticle({
 }) {
   function angkaPrima(num) {
     let x = 0
-    for (let i = 2; i <= Math.floor(num / 2); i++) {
+    let newNum = num + 1
+    for (let i = 2; i <= Math.floor(newNum / 2); i++) {
       x++
-      if (num % i === 0) {
+      if (newNum % i === 0) {
         return false
       }
     }
@@ -19,9 +20,10 @@ export default function CardArticle({
   }
   return (
     <>
+      <p>{index + 1}</p>
       <img
         src={cover}
-        className="h-[266px] w-[400px] rounded-lg bg-black"
+        className="h-[266px] w-full rounded-lg bg-black object-cover sm:w-[400px]"
       ></img>
       <p className="flex w-full justify-start font-dm-sans text-2xl">{title}</p>
       <p className="flex w-full font-dm-sans text-xs leading-4">{summary}</p>
@@ -29,7 +31,7 @@ export default function CardArticle({
         <div>
           <p
             className={`${
-              index > 2
+              index > 1 && index < 25
                 ? angkaPrima(index)
                   ? 'text-blue-500'
                   : 'hidden'
